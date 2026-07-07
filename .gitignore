@@ -1,0 +1,38 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ty/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local ADK / Agents CLI runtime state
+.adk/
+app/.adk/
+.google-agents-cli/
+.agents-cli-scripts/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Large generated outputs; keep curated samples
+artifacts/traces/*.json
+artifacts/grade_results/
+!artifacts/sample_outputs/

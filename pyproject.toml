@@ -1,0 +1,64 @@
+[project]
+name = "careerproof-agent"
+version = "0.1.0"
+description = "CareerProof Agent: an AI career concierge for evidence-based interview strategy."
+authors = [{ name = "Alice Chen" }]
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "google-adk[gcp]>=2.0.0,<3.0.0",
+  "python-dotenv>=1.0.0",
+  "pydantic>=2.0.0",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[project.optional-dependencies]
+lint = [
+  "ruff>=0.4.6,<1.0.0",
+  "ty>=0.0.1a0",
+  "codespell>=2.2.0,<3.0.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "C", "B", "UP", "RUF"]
+ignore = ["E501", "C901", "B006"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.ty]
+
+[tool.ty.environment]
+python-version = "3.11"
+
+[tool.ty.src]
+exclude = [".venv/**"]
+
+[tool.ty.rules]
+unresolved-import = "ignore"
+unresolved-attribute = "ignore"
+invalid-argument-type = "ignore"
+invalid-assignment = "ignore"
+invalid-return-type = "ignore"
+possibly-missing-attribute = "ignore"
+not-subscriptable = "ignore"
+deprecated = "ignore"
+unknown-argument = "ignore"
+
+[tool.codespell]
+ignore-words-list = "CareerProof,roadmap,FinTech,HealthTech,PropTech,InsurTech,EdTech,MarTech,AdTech,WealthTech,RevPAR,ROAS,ARR,MRR,NRR,GRR,ARPU,ARPPU,DAU,MAU"
+skip = ".venv,uv.lock,artifacts/traces,artifacts/grade_results"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]
